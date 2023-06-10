@@ -1,0 +1,28 @@
+name: Build and Run VB Application
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x' # Specify the desired .NET Core version
+
+    - name: Build and Run
+      run: |
+        cd path/to/your/project
+        dotnet build
+        dotnet run
